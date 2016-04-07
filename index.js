@@ -198,9 +198,10 @@ module.exports = function (line) {
   });
 
   // set protocol name
+  parsed['protocol_name'] = '-';
   if(parsed['protocol'] < 143) {
     parsed['protocol_name'] = protocols[parsed['protocol']];
-  }
+  } 
 
   // set date 
   var mStart = moment.unix(Number(parsed['start']));

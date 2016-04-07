@@ -37,3 +37,35 @@ tap.test('tcp traffic', function (t) {
   t.equal(parsed.end_utc, '2016-04-07 05:04:09', 'we have end_utc');
   t.end();
 });
+
+tap.test('NODATA traffic', function (t) {
+  var parsed = parse(
+    '2 123456789010 eni-1a2b3c4d - - - - - - - 1431280876 1431280934 - NODATA'
+  );
+  t.equal(parsed.srcaddr, '-', 'we have srcaddr');
+  t.equal(parsed.dstaddr, '-', 'we have dstaddr');
+  t.equal(parsed.srcport, '-', 'we have srcport');
+  t.equal(parsed.dstport, '-', 'we have dstport');
+  t.equal(parsed.protocol, '-', 'we have protocol');
+  t.equal(parsed.packets, '-', 'we have packets');
+  t.equal(parsed.byte, '-', 'we have byte');
+  t.equal(parsed.protocol_name, '-', 'we have protocol_name');
+  t.equal(parsed.log_status, 'NODATA', 'we have log_status');
+  t.end();
+});
+
+tap.test('skip traffic', function (t) {
+  var parsed = parse(
+    '2 123456789010 eni-4b118871 - - - - - - - 1431280876 1431280934 - SKIPDATA'
+  );
+  t.equal(parsed.srcaddr, '-', 'we have srcaddr');
+  t.equal(parsed.dstaddr, '-', 'we have dstaddr');
+  t.equal(parsed.srcport, '-', 'we have srcport');
+  t.equal(parsed.dstport, '-', 'we have dstport');
+  t.equal(parsed.protocol, '-', 'we have protocol');
+  t.equal(parsed.packets, '-', 'we have packets');
+  t.equal(parsed.byte, '-', 'we have byte');
+  t.equal(parsed.protocol_name, '-', 'we have protocol_name');
+  t.equal(parsed.log_status, 'SKIPDATA', 'we have log_status');
+  t.end();
+});
