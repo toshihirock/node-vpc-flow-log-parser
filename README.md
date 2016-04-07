@@ -36,7 +36,10 @@ undefined
   start: '1460005175',
   end: '1460005449',
   action: 'ACCEPT',
-  log_status: 'OK' }
+  log_status: 'OK',
+  protocol_name: 'UDP',
+  start_utc: '2016-04-07 04:59:35',
+  end_utc: '2016-04-07 05:04:09' }
 >
 ```
 
