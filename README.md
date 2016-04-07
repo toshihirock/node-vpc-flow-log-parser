@@ -1,5 +1,8 @@
 # vpc-flow-log-parser
 
+[![npm version](https://badge.fury.io/js/vpc-flow-log-parser.svg)](https://badge.fury.io/js/vpc-flow-log-parser)
+[![Build Status](https://travis-ci.org/toshihirock/node-vpc-flow-log-parser.svg?branch=master)](https://travis-ci.org/toshihirock/node-vpc-flow-log-parser)
+
 A basic parser for VPC Flow Log, strongly inspired by node-clf-parser https://github.com/jfhbrook/node-clf-parser 
 
 ## When I use this npm?
