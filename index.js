@@ -1,3 +1,5 @@
+var moment = require('moment');
+
 module.exports = function (line) {
   var protocols = [
     'HOPOPT',
@@ -199,6 +201,12 @@ module.exports = function (line) {
   if(parsed['protocol'] < 143) {
     parsed['protocol_name'] = protocols[parsed['protocol']];
   }
+
+  // set date 
+  var mStart = moment.unix(Number(parsed['start']));
+  var mEnd= moment.unix(Number(parsed['end']));
+  parsed['start_utc'] = mStart.utc().format('YYYY-MM-DD HH:mm:ss');
+  parsed['end_utc'] = mEnd.utc().format('YYYY-MM-DD HH:mm:ss');
 
   return parsed;
 };
