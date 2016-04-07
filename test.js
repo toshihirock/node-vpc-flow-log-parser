@@ -20,5 +20,16 @@ tap.test('accept traffic', function (t) {
   t.equal(parsed.end, '1460005449', 'we have end');
   t.equal(parsed.action, 'ACCEPT', 'we have action');
   t.equal(parsed.log_status, 'OK', 'we have log_status');
+  t.equal(parsed.protocol_name, 'UDP', 'we have protocol_name');
+  t.end();
+});
+
+tap.test('tcp traffic', function (t) {
+  var parsed = parse(
+    '2 1111 eni-901258d8 133.130.120.204 172.31.23.15 123 123 6 3 228 1460005175 1460005449 REJECT NODATA'
+  );
+  t.equal(parsed.action, 'REJECT', 'we have action');
+  t.equal(parsed.log_status, 'NODATA', 'we have log_status');
+  t.equal(parsed.protocol_name, 'TCP', 'we have protocol_name');
   t.end();
 });
